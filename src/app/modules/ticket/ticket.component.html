@@ -1,0 +1,133 @@
+<div class="container-fluid">
+    <div class="row mt-3">
+        <h2>Create New Ticket Request</h2>
+    </div>
+
+    <div class="form-card mb-3">
+        <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+            <div class="form-grid">
+                <!-- Client Info -->
+                <div class="form-group">
+                    <label>Client Name *</label>
+                    <input type="text" formControlName="clientName" placeholder="e.g. Mandala Travel">
+                    <div *ngIf="ticketForm.get('clientName')?.touched && ticketForm.get('clientName')?.errors?.['required']"
+                        class="error-msg">
+                        Client Name is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Client Email *</label>
+                    <input type="email" formControlName="clientEmail" placeholder="client@example.com">
+                    <div *ngIf="ticketForm.get('clientEmail')?.touched && ticketForm.get('clientEmail')?.errors?.['required']"
+                        class="error-msg">
+                        Client Email is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Request Date *</label>
+                    <mat-form-field style="width: 100%;">
+                        <input matInput [matDatepicker]="datepicker" [readonly]="true" formControlName="requestDate">
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker"
+                            style="color: unset;"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker></mat-datepicker>
+                    </mat-form-field>
+                    <div *ngIf="ticketForm.get('requestDate')?.touched && ticketForm.get('requestDate')?.errors?.['required']"
+                        class="error-msg">
+                        Request Date is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Tickets *</label>
+                    <input type="number" formControlName="ticketCount">
+                    <div *ngIf="ticketForm.get('ticketCount')?.touched && ticketForm.get('ticketCount')?.errors?.['required']"
+                        class="error-msg">
+                        Number of Tickets is required.
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Cost *</label>
+                    <input type="number" formControlName="cost">
+                    <div *ngIf="ticketForm.get('cost')?.touched && ticketForm.get('cost')?.errors?.['required']"
+                        class="error-msg">
+                        Cost is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Sell *</label>
+                    <input type="number" formControlName="sell">
+                    <div *ngIf="ticketForm.get('sell')?.touched && ticketForm.get('sell')?.errors?.['required']"
+                        class="error-msg">
+                        Sell is required.
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Profit</label>
+                    <input type="number" formControlName="profit" readonly style="background-color: #f1f5f9;">
+                </div>
+
+                <div class="form-group">
+                    <label>Travellers Names *</label>
+                    <input type="text" formControlName="travellers" placeholder="Full names of all travellers">
+                    <div *ngIf="ticketForm.get('travellers')?.touched && ticketForm.get('travellers')?.errors?.['required']"
+                        class="error-msg">
+                        Travellers is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Travel Date *</label>
+                    <mat-form-field style="width: 100%;">
+                        <input matInput [matDatepicker]="datepicker1" [readonly]="true" formControlName="travelDate" (dateChange)="onDateChange()">
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker1"
+                            style="color: unset;"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker1></mat-datepicker>
+                    </mat-form-field>
+                    <div *ngIf="ticketForm.get('travelDate')?.touched && ticketForm.get('travelDate')?.errors?.['required']"
+                        class="error-msg">
+                        Travel Date is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Consultant *</label>
+                    <!-- <select formControlName="consultant">
+                        <option value="">Select Consultant</option>
+                        <option value="TAREK RAAD">Tarek Raad</option>
+                        <option value="FARAH SAKKA">Farah Sakka</option>
+                    </select> -->
+                    <input type="text" formControlName="consultant" placeholder="Full Name of Consultant">
+                    <div *ngIf="ticketForm.get('consultant')?.touched && ticketForm.get('consultant')?.errors?.['required']"
+                        class="error-msg">
+                        Consultant is required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Itinerary (Airport Codes) *</label>
+                    <input type="text" formControlName="itinerary" placeholder="e.g. BEY - LCA">
+                    <div *ngIf="ticketForm.get('itinerary')?.touched && ticketForm.get('itinerary')?.errors?.['required']"
+                        class="error-msg">
+                        Itinerary (Airport Codes) is required.
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Additional Notes</label>
+                    <textarea formControlName="notes" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" mat-raised-button (click)="goBack()">Cancel</button>
+                <button type="submit" mat-raised-button class="button-primary" [disabled]="!isFormValid()">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="via-nicolas-container">
+  <mat-sidenav-container class="sidenav-container" autosize>
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="true">
+      <div class="sidenav-wrapper">
+        <div class="container-fluid flex-grow-1" style="margin-top: 0px;">
+          <div class="row">
+            <div class="col-12 text-end">
+              <button mat-icon-button (click)="drawer.close()" class="close-btn">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+            <div class="col-12 mt-2">
+              <img src="../../../assets/images/via-nicolas-transparent.png" alt="Via Nicolas"
+                style="width: 100%;height: auto;">
+              <hr>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-12 text-start mt-1" *ngFor="let item of items">
+              <div class="item" (click)="selectItem(item.name)" style="width: 100%;"
+                [ngClass]="{'active-item': selectedItem === item.name}">
+                <i class="{{item.icon}}"></i>{{item.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <hr class="mobile-logout">
+          <div class="col-12 text-center item mobile-logout" (click)="onLogout()">
+            <i class="fas fa-sign-out-alt"></i> Sign Out
+          </div>
+        </div>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="top-toolbar">
+        <div class="toolbar-actions">
+          <button type="button" mat-icon-button (click)="drawer.open()" *ngIf="!drawer.opened">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <!-- <img src="../../../assets/images/airplain.png" alt="" style="width: 30px;"> -->
+        <i class="fa-solid fa-plane" style="rotate: -45deg;margin-top: -5px;"></i>
+        &nbsp;
+        <span>Welcome Rony Nicolas</span>
+        <span class="spacer"></span>
+        <button mat-button (click)="onLogout()" class="logout-btn desktop-logout">
+          <span class="logout-text">Sign Out</span>
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+      <div style="display: block;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

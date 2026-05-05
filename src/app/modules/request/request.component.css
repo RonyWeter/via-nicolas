@@ -1,0 +1,71 @@
+.form-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+  gap: 20px;
+}
+
+.full-width { grid-column: span 2; }
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #1a2b3c; /* Brand Navy */
+  font-size: 0.9rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+input:focus { border-color: #58b9e6; outline: none; }
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn-save {
+  background-color: #58b9e6; /* Brand Blue */
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-save:disabled { opacity: 0.5; }
+
+/* Responsive: Stack columns on mobile */
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .full-width { grid-column: span 1; }
+  .form-card { padding: 20px; }
+}
+
+
+.error-msg {
+    color: #ef4444; /* Standard error red */
+    font-size: 0.75rem;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* Optional: Make the input border red when invalid and touched */
+input.ng-invalid.ng-touched {
+    border-color: #ef4444 !important;
+}

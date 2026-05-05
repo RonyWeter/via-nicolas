@@ -1,0 +1,84 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); */
+  background-image: url(../../../assets/images/test_2.jpg);
+
+  /* Use 'cover' here to make it full width/height without stretching */
+  background-size: cover;
+
+  /* Center the image within the container */
+  background-position: center;
+
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  opacity: 0.8;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+}
+
+.brand-logo {
+  width: 100%;
+  max-width: 220px;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  color: var(--logo-navy);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--logo-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(88, 185, 230, 0.4);
+  transition: transform 0.2s, background 0.2s;
+}
+
+
+.login-btn:hover:not(:disabled) {
+  background-color: #3fa8d6;
+  transform: translateY(-1px);
+}
+
+.tagline {
+  display: block;
+  margin-top: 2rem;
+  color: var(--logo-blue);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  opacity: 0.8;
+}
+
+
+.form-group {
+  margin-bottom: 0.7rem;
+}

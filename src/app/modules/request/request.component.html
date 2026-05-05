@@ -1,0 +1,66 @@
+<div class="container-fluid" style="margin-top: 0px;">
+    <div class="row mt-1">
+        <div class="col-12 text-end">
+            <button mat-icon-button (click)="dialogRef.close()" class="close-btn">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2>Create New Request</h2>
+    </div>
+
+    <div class="form-card mb-3">
+        <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Description *</label>
+                    <input type="text" formControlName="desc" placeholder="Item Name ...">
+                    <div *ngIf="requestForm.get('desc')?.touched && requestForm.get('desc')?.errors?.['required']"
+                        class="error-msg">
+                        Description is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date *</label>
+                    <mat-form-field style="width: 100%;">
+                        <input matInput [matDatepicker]="datepicker" [readonly]="true" formControlName="date">
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker"
+                            style="color: unset;"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker></mat-datepicker>
+                    </mat-form-field>
+                    <div *ngIf="requestForm.get('date')?.touched && requestForm.get('date')?.errors?.['required']"
+                        class="error-msg">
+                        Date is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Cost *</label>
+                    <input type="number" formControlName="cost">
+                    <div *ngIf="requestForm.get('cost')?.touched && requestForm.get('cost')?.errors?.['required']"
+                        class="error-msg">
+                        Cost is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Sell *</label>
+                    <input type="number" formControlName="sell">
+                    <div *ngIf="requestForm.get('sell')?.touched && requestForm.get('sell')?.errors?.['required']"
+                        class="error-msg">
+                        Sell is required.
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label>Profit</label>
+                    <input type="text" formControlName="profit" readonly style="background-color: #f1f5f9;">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" mat-raised-button (click)="dialogRef.close()">Cancel</button>
+                <button type="submit" mat-raised-button class="button-primary" [disabled]="!isFormValid()">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

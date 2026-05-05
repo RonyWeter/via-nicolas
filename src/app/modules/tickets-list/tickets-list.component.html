@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-lg-8">
+            <h2>Tickets Requests</h2>
+        </div>
+        <div class="col-lg-4 text-end">
+            <input type="text" placeholder="Search Tickets..." class="search-input" [(ngModel)]="searchText"
+                (keyup)="applyFilter()">
+        </div>
+    </div>
+    <div class="row mt-3 mb-4">
+        <div class="col-lg-12 text-end">
+            <button mat-raised-button (click)="exportToExcel()">Export to Excel</button>
+            &nbsp;
+            <button mat-raised-button class="button-primary" (click)="createNewTicket()">
+                <i class="fas fa-plus"></i> New Ticket
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>CLIENT</th>
+                    <th>REQUEST DATE</th>
+                    <th>TRAVEL DATE</th>
+                    <th>TRAVELLERS</th>
+                    <th>TICKETS</th>
+                    <th>CONSULTANTS</th>
+                    <th>ITINERARY</th>
+                    <th class="text-center">ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="filteredTickets.length === 0">
+                    <td colspan="9" style="text-align: center;">No tickets found.</td>
+                </tr>
+                <ng-container *ngIf="filteredTickets.length != 0">
+                    <tr *ngFor="let ticket of filteredTickets">
+                        <td>{{ticket.id}}</td>
+                        <td>{{ticket.clientName}}</td>
+                        <td>{{ticket.requestDate}}</td>
+                        <td>{{ticket.travelDate}}</td>
+                        <td>{{ticket.travellers}}</td>
+                        <td>{{ticket.ticketCount}}</td>
+                        <td>{{ticket.consultant}}</td>
+                        <td>{{ticket.itinerary}}</td>
+                        <td class="action-cell">
+                            <button mat-icon-button class="view-btn" (click)="viewTicket(ticket)" title="View">
+                                <mat-icon>visibility</mat-icon>
+                            </button>
+                            <button mat-icon-button class="edit-btn" (click)="editTicket(ticket)" title="Edit">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button class="delete-btn" (click)="deleteTicket(ticket)" title="Edit">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

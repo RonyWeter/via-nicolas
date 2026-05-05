@@ -1,0 +1,82 @@
+
+.table-section {
+  padding: 30px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Table Responsiveness */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scroll on mobile */
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px; /* Ensures table columns don't squash too much */
+}
+
+.data-table th {
+  text-align: left;
+  padding: 15px;
+  background: var(--header-color);
+  color: var(--logo-navy);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  padding: 15px;
+  /* border-bottom: 1px solid #edf2f7; */
+  font-size: 0.85rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+  .sidebar { width: 80px; }
+  .nav-item span { display: none; }
+}
+
+@media (max-width: 768px) {
+  .sidebar { display: none; } /* Hide sidebar on small mobile */
+  .top-toolbar { flex-direction: column; gap: 10px; }
+  .right-tools { width: 100%; align-items: stretch; }
+}
+
+
+
+
+
+.right-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+
+
+/* Action Buttons inside Table */
+.action-cell {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.view-btn { color: #64748b; } /* Grey for View */
+.edit-btn { color: #1a2b3c; } /* Navy for Edit */
+
+.view-btn:hover { color: #58b9e6; }
+.edit-btn:hover { color: #58b9e6; }
+.delete-btn:hover { color: red; }
+
